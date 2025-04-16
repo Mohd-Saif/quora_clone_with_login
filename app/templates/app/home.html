@@ -1,0 +1,18 @@
+<h1>Questions</h1>
+<p><a> Ask a Question </a> | 
+<a href="/register/">Register</a></p>
+<ul>
+{% if user.is_authenticated %}
+  {% for question in questions %}
+    <li>
+      <a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a> — by {{ question.created_by.username }}
+    </li>
+  {% endfor %}
+{% else %}
+  <p>Please <a href="{% url 'login' %}">log in</a> to see the data.</p>
+{% endif %}
+
+</ul> 
+
+
+
